@@ -1,8 +1,5 @@
-package inheritance_people;
+package inheritance.people;
 
-/**
- * Created by Alessia on 9/19/2017.
- */
 public class Person {
 
     protected String name;

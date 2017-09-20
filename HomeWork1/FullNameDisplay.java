@@ -1,10 +1,4 @@
-/**
- * Created by Alessia on 9/19/2017.
- *
- *  Purpose: Display full name of creator
- */
-
-import inheritance_people.Person;
+import inheritance.people.Person;
 
 public class FullNameDisplay {
 
