@@ -3,7 +3,7 @@ package inheritance_people;
 /**
  * Created by Alessia on 9/19/2017.
  */
-public class Employee {
+public class Employee extends Person {
 
     private String jobTitle;
 
