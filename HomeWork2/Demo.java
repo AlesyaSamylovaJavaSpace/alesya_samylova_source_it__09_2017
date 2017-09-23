@@ -17,7 +17,7 @@ public class Demo {
         System.out.println("\n---- Task 2 ----");
         System.out.println(b + " " + (Task2Palindrome.isPalindrome(b) ? "IS" : "ISN'T") + " palindrome");
 
-        int[] arr = {123, 15, 455, 81, 19, 8793978, 13, 11, 15};
+        int[] arr = {123, 15, 455, 81, 19, 8793978, 13, 112, 15};
         Integer [] arrInt = IntStream.of(arr).boxed().toArray( Integer[]::new );
        // int[] intArray = Arrays.stream(arrInt).mapToInt(Integer::intValue).toArray();
         System.out.println("\nYour array is " + getStringFromArray(arrInt));
