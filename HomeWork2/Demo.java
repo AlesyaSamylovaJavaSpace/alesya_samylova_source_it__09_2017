@@ -29,7 +29,14 @@ public class Demo {
         System.out.println("\n---- Task 3 ----");
         Task3Month.printMonthName(month);
 
+        //Task 4
+        System.out.println("\n---- Task 4 ----");
+        String algo = "MD5";
+        String input = "Spring is coming";
+        System.out.println("\n Hash code for (" + input + "; "+ algo + ") is " + Task4Hash.getHashCode(input, algo));
+
         //Task 6
+        System.out.println("\n---- Task 6 ----");
         Integer [][] myMatrix = {{3, 5, 0}, {11, 15, 1}, {6, 7, 8}};
         Task6Max task6 = new Task6Max();
         task6.matrix = myMatrix;
