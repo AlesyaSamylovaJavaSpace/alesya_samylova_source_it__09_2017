@@ -35,6 +35,18 @@ public class Demo {
         String input = "Spring is coming";
         System.out.println("\n Hash code for (" + input + "; "+ algo + ") is " + Task4Hash.getHashCode(input, algo));
 
+        // Task 5
+        System.out.println("\n---- Task 5 ----");
+        Integer numCode = 677;
+        System.out.println("In Excel [" + numCode + "] -> [" + Task5ExcelColumn.getExcelStringCode(numCode) + "]");
+
+        String strCode1 = "YZ";
+        System.out.println("Excel [" + strCode1 +"] -> [" + Task5ExcelColumn.getIntCodeForExcelColumn(strCode1) + "]");
+
+        String strCode2="ZB";
+        System.out.println("Next column for \""+strCode2+"\" is \""+Task5ExcelColumn.getNextExcelColumn(strCode2)+"\"");
+        System.out.println("Next column for \""+strCode1+"\" is \""+Task5ExcelColumn.getNextExcelColumn(strCode1)+"\"");
+        
         //Task 6
         System.out.println("\n---- Task 6 ----");
         Integer [][] myMatrix = {{3, 5, 0}, {11, 15, 1}, {6, 7, 8}};
