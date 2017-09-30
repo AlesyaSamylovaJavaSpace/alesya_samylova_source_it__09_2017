@@ -44,4 +44,24 @@ public class Person {
         return fullName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (!name.equals(person.name)) return false;
+        if (!surname.equals(person.surname)) return false;
+        return patronymicName.equals(person.patronymicName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + surname.hashCode();
+        result = 31 * result + patronymicName.hashCode();
+        return result;
+    }
 }
