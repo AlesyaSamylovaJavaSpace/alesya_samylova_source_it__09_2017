@@ -6,7 +6,8 @@ public class Task2StringAnalyzer {
             System.out.println("WARN: You don't provide the string. Task will be canceled.");
         }
 
-        String[] words = sampleString.split("\\W+"); // using regex literal to denote any number of non-words symbols
+        // splitting by W+ regex doesn't allow to catch non-english words, so non-words are explicitly declared
+        String[] words = sampleString.split("[,\\s\\.\\?\\-:;!\"']"); // using regex literal to denote non-words symbols
 
         if (words == null){
             System.out.println("WARN: Your string does not contain words. Task will be canceled.");
@@ -16,10 +17,20 @@ public class Task2StringAnalyzer {
         int minLength = 0;
         int maxLenIndex = 0;
         int maxLength = 0;
+        boolean isFirstRun = true;
 
         for(int i = 0; i < words.length; i++) {
-            if (words[i]!= null){
+            if (words[i]!= null && !words[i].isEmpty()){
                 System.out.println("\"" + words[i] + "\"");
+
+                if (isFirstRun){
+                    minLength = words[i].length();
+                    minLenIndex = i;
+                    maxLength = minLength;
+                    maxLenIndex = minLenIndex;
+                    isFirstRun = false;
+
+                }
 
             } else {
                 continue;
@@ -37,8 +48,12 @@ public class Task2StringAnalyzer {
             }
         }
 
-        System.out.println("# The shortest word is \"" + words[minLenIndex] + "\"" );
-        System.out.println("# The longest word is \"" + words[maxLenIndex] + "\"" );
+        if(!isFirstRun) {
+            System.out.println("# The shortest word is \"" + words[minLenIndex] + "\"");
+            System.out.println("# The longest word is \"" + words[maxLenIndex] + "\"");
+        } else {
+            System.out.printf("# Sorry, there are no words in your string: %s%nGive yourself another run.", sampleString);
+        }
     }
 
 }
