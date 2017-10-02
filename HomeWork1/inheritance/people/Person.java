@@ -58,6 +58,11 @@ public class Person {
     }
 
     @Override
+    public String toString() {
+        return String.format("{%2$s %1$s %3$s}", name, surname, patronymicName);
+    }
+
+    @Override
     public int hashCode() {
         int result = name.hashCode();
         result = 31 * result + surname.hashCode();
