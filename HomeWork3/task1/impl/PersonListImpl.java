@@ -126,19 +126,25 @@ public class PersonListImpl implements PersonList {
     @Override
     public int indexOf(Object o) {
         if ( o instanceof Person) {
-           Person person = (Person) o;
-            if (person != null) {
-                for (int i = 0; i < arrayOfPersons.length; i++) {
-                    if (person.equals(arrayOfPersons[i])) {
-                        return i;
-                    }
-                }
-            } else {
-                for (int i =0; i < arrayOfPersons.length; i++){
-                    if (arrayOfPersons[i]==null){
-                        return i;
-                    }
-                }
+            Person person = (Person) o;
+            return person!=null ? indexOfNonNullObject(person) : indexOfNullObject(person);
+        }
+        return -1;
+    }
+
+    private int indexOfNonNullObject(Person person) {
+        for (int i = 0; i < arrayOfPersons.length; i++) {
+            if (person.equals(arrayOfPersons[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private int indexOfNullObject(Person person) {
+        for (int i =0; i < arrayOfPersons.length; i++){
+            if (arrayOfPersons[i]==null){
+                return i;
             }
         }
         return -1;
@@ -148,23 +154,29 @@ public class PersonListImpl implements PersonList {
     public int lastIndexOf(Object o) {
         if (o instanceof Person) {
             Person person = (Person) o;
+            return person != null? lastIndexOfNonNullObject(person): lastIndexOfNullObject(person);
+        }
+        return -1;
+    }
 
-            if (person != null) {
-                for (int i = arrayOfPersons.length - 1; i >= 0 ; i--) {
-                    if (person.equals(arrayOfPersons[i])) {
-                        return i;
-                    }
-                }
-            } else {
-                for (int i = arrayOfPersons.length - 1; i >= 0; i--) {
-                    if(arrayOfPersons[i]==null){
-                        return i;
-                    }
-                }
+    private int lastIndexOfNonNullObject(Person person) {
+        for (int i = arrayOfPersons.length - 1; i >= 0 ; i--) {
+            if (person.equals(arrayOfPersons[i])) {
+                return i;
             }
         }
         return -1;
     }
+
+    private int lastIndexOfNullObject(Person person) {
+        for (int i = arrayOfPersons.length - 1; i >= 0; i--) {
+            if(arrayOfPersons[i]==null){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     // Section 2 (not in scope of Home Work 3)
     @Override

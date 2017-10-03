@@ -8,11 +8,6 @@ import java.io.Console;
 
 public class DemoHomeWork3 {
 
-    public static void setParam(int param1, int param2){
-
-    }
-
-
     public static void main(String[] args){
 
         System.out.println("---- Demonstration of Home Work 3 ----");
