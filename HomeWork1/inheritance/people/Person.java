@@ -1,5 +1,7 @@
 package inheritance.people;
 
+import java.text.MessageFormat;
+
 public class Person {
 
     protected String name;
@@ -59,7 +61,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("{%2$s %1$s %3$s}", name, surname, patronymicName);
+        return MessageFormat.format("'{'{1} {0} {2}'}'", name, surname, patronymicName);
     }
 
     @Override
