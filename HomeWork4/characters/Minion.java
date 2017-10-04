@@ -1,15 +1,25 @@
 package characters;
 
-import utils.mytypes.Color;
-import utils.mytypes.HobbyType;
+import utils.mytypes.*;
+
+import java.time.LocalDate;
 
 public class Minion extends Character {
     public static final Color DEFAULT_COLOR = Color.YELLOW;
     public static final String FAVOURITE_FOOD_BY_DEFAULT = "BANANAS";
     public static final int DEFAULT_NUMBER_OF_EYES = 2;
     public static final int DEFAULT_NUMBER_OF_HAIRS_ON_THE_HEAD = 0;
+    public static final String DEFAULT_GARMENT = "OVERALL";
+    public static final HobbyType DEFAULT_HOBBY = HobbyType.DANCING;
+
+    private static final Double DEFAULT_HEIGHT = 105.0;
+    private static final Double DEFAULT_WEIGHT = 10.0;
+    private static final HeightUnit DEFAULT_UNIT_OF_HEIGHT = HeightUnit.CM;
+    private static final WeightUnit DEFAULT_UNIT_OF_WEIGHT = WeightUnit.KG;
+    private static Gender DEFAULT_GENDER = Gender.TRANSGENDER;
 
     public static String ownerName;
+    public static String defaultName = "Kevin";
     private static Integer numberOfMinions;
 
     private Color color;
@@ -18,6 +28,76 @@ public class Minion extends Character {
     private String favouriteFood;
     private String garment;
     private HobbyType hobby;
+
+    public Minion() {
+        this(defaultName);
+    }
+
+    public Minion (String name){
+        super(name, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_HEIGHT);
+        this.color = DEFAULT_COLOR;
+        this.numberOfEyes = DEFAULT_NUMBER_OF_EYES;
+        this.numberOfHairsOnTheHead = DEFAULT_NUMBER_OF_HAIRS_ON_THE_HEAD;
+        this.favouriteFood = FAVOURITE_FOOD_BY_DEFAULT;
+        this.garment = DEFAULT_GARMENT;
+        this.hobby = DEFAULT_HOBBY;
+    }
+
+    public Minion(Color color, int numberOfEyes, int numberOfHairsOnTheHead, String favouriteFood, String garment, HobbyType hobby) {
+        super(defaultName, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_HEIGHT);
+        this.color = color;
+        this.numberOfEyes = numberOfEyes;
+        this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
+        this.favouriteFood = favouriteFood;
+        this.garment = garment;
+        this.hobby = hobby;
+    }
+
+    public Minion(String name, Gender gender, Double height, Double weight, Color color, int numberOfEyes,
+                  int numberOfHairsOnTheHead, String favouriteFood, String garment, HobbyType hobby) {
+        super(name, gender, height, weight);
+        this.color = color;
+        this.numberOfEyes = numberOfEyes;
+        this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
+        this.favouriteFood = favouriteFood;
+        this.garment = garment;
+        this.hobby = hobby;
+    }
+
+    public Minion(String name, LocalDate birthdayDate, Gender gender, Double height, Double weight,
+                  Color color, int numberOfEyes, int numberOfHairsOnTheHead, String favouriteFood,
+                  String garment, HobbyType hobby) {
+        super(name, birthdayDate, gender, height, weight);
+        this.color = color;
+        this.numberOfEyes = numberOfEyes;
+        this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
+        this.favouriteFood = favouriteFood;
+        this.garment = garment;
+        this.hobby = hobby;
+    }
+
+    public Minion(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Gender gender, Double height,
+                  Double weight, Color color, int numberOfEyes, int numberOfHairsOnTheHead, String favouriteFood,
+                  String garment, HobbyType hobby) {
+        super(name, birthdayDay, birthdayMonth, birthdayYear, gender, height, weight);
+        this.color = color;
+        this.numberOfEyes = numberOfEyes;
+        this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
+        this.favouriteFood = favouriteFood;
+        this.garment = garment;
+        this.hobby = hobby;
+    }
+
+    public Minion(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Color color,
+                  int numberOfEyes, int numberOfHairsOnTheHead, String favouriteFood, String garment, HobbyType hobby) {
+        super(name, birthdayDay, birthdayMonth, birthdayYear);
+        this.color = color;
+        this.numberOfEyes = numberOfEyes;
+        this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
+        this.favouriteFood = favouriteFood;
+        this.garment = garment;
+        this.hobby = hobby;
+    }
 
     public HobbyType getHobby() {
         return hobby;
@@ -99,4 +179,35 @@ public class Minion extends Character {
         return DEFAULT_COLOR;
     }
 
+    public static Gender getDefaultGender() {
+        return DEFAULT_GENDER;
+    }
+
+    public static void setDefaultGender(Gender defaultGender) {
+        DEFAULT_GENDER = defaultGender;
+    }
+
+    public static Double getDefaultWeight() {
+        return DEFAULT_WEIGHT;
+    }
+
+    public static HeightUnit getDefaultUnitOfHeight() {
+        return DEFAULT_UNIT_OF_HEIGHT;
+    }
+
+    public static WeightUnit getDefaultUnitOfWeight() {
+        return DEFAULT_UNIT_OF_WEIGHT;
+    }
+
+    public static Double getDefaultHeight() {
+        return DEFAULT_HEIGHT;
+    }
+
+    public static String getDefaultGarment() {
+        return DEFAULT_GARMENT;
+    }
+
+    public static HobbyType getDefaultHobby() {
+        return DEFAULT_HOBBY;
+    }
 }

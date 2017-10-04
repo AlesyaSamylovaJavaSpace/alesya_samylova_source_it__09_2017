@@ -16,6 +16,7 @@ public class Character implements Cloneable {
     protected static final HeightUnit DEFAULT_UNIT_OF_HEIGHT = HeightUnit.M;
     protected static final WeightUnit DEFAULT_UNIT_OF_WEIGHT = WeightUnit.KG;
     protected static Gender DEFAULT_GENDER = Gender.MALE;
+    public static String defaultName = "Unknown Hero";
 
     protected String name;
     protected LocalDate birthdayDate;
@@ -25,6 +26,42 @@ public class Character implements Cloneable {
     protected Double weight;
     protected Double bmi;
     protected BMICategories categoryOfWeight;
+
+    public Character(){
+        this(defaultName);
+    }
+
+    public Character(String name){
+        this(name, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_WEIGHT);
+    }
+
+    public Character(String name, Gender gender, Double height, Double weight) {
+        this.birthdayDate = LocalDate.now();
+        setName(name);
+        setGender(gender);
+        setHeight(height);
+        setWeight(weight);
+    }
+
+    public Character(String name, LocalDate birthdayDate, Gender gender, Double height, Double weight) {
+        setName(name);
+        setBirthdayDate(birthdayDate);
+        setGender(gender);
+        setHeight(height);
+        setWeight(weight);
+    }
+
+    public Character(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Gender gender, Double height, Double weight) {
+        setName(name);
+        setBirthdayDate(birthdayYear, birthdayMonth, birthdayDay);
+        setGender(gender);
+        setHeight(height);
+        setWeight(weight);
+    }
+
+    public Character(String name, int birthdayDay, int birthdayMonth, int birthdayYear){
+        this(name, birthdayDay, birthdayMonth, birthdayYear, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_WEIGHT);
+    }
 
     public static Gender getDefaultGender() {
         return DEFAULT_GENDER;
@@ -43,8 +80,6 @@ public class Character implements Cloneable {
     public void setGender(Gender gender) {
         if (gender != null) {
             this.gender = gender;
-        } else {
-            gender = DEFAULT_GENDER;
         }
     }
 
@@ -165,12 +200,9 @@ public class Character implements Cloneable {
         return "Character{" +
                 "name='" + name + '\'' +
                 ", birthdayDate=" + birthdayDate +
-                ", age=" + age +
                 ", gender=" + gender +
                 ", height=" + height +
                 ", weight=" + weight +
-                ", bmi=" + bmi +
-                ", categoryOfWeight=" + categoryOfWeight +
                 '}';
     }
 

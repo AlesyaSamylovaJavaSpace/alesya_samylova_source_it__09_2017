@@ -42,6 +42,10 @@ public class Hero extends Character{
         Hero.generalDefinitionOfHeroClass = generalDefinitionOfHeroClass;
     }
 
+    public static void resetGeneralDefinitionOFHeroClassToDefault(){
+        Hero.generalDefinitionOfHeroClass = DEFAULT_GENERAL_DEFINITIONS_OF_HERO;
+    }
+
     public boolean isGoodOne() {
         return isGoodOne;
     }
