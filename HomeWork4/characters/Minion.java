@@ -2,6 +2,7 @@ package characters;
 
 import utils.mytypes.*;
 
+import java.text.MessageFormat;
 import java.time.LocalDate;
 
 public class Minion extends Character {
@@ -20,13 +21,13 @@ public class Minion extends Character {
 
     public static String ownerName;
     public static String defaultName = "Kevin";
-    private static Integer numberOfMinions;
+    private static Integer numberOfMinions = 0;
 
     private Color color;
     private int numberOfEyes = 2;
     private int numberOfHairsOnTheHead = 0;
     private String favouriteFood;
-    private String garment;
+    private String garment = DEFAULT_GARMENT;
     private HobbyType hobby;
 
     public Minion() {
@@ -41,16 +42,18 @@ public class Minion extends Character {
         this.favouriteFood = FAVOURITE_FOOD_BY_DEFAULT;
         this.garment = DEFAULT_GARMENT;
         this.hobby = DEFAULT_HOBBY;
+        numberOfMinions++;
     }
 
     public Minion(Color color, int numberOfEyes, int numberOfHairsOnTheHead, String favouriteFood, String garment, HobbyType hobby) {
-        super(defaultName, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_HEIGHT);
+        super(defaultName, DEFAULT_GENDER, DEFAULT_HEIGHT, DEFAULT_WEIGHT);
         this.color = color;
         this.numberOfEyes = numberOfEyes;
         this.numberOfHairsOnTheHead = numberOfHairsOnTheHead;
         this.favouriteFood = favouriteFood;
         this.garment = garment;
         this.hobby = hobby;
+        numberOfMinions++;
     }
 
     public Minion(String name, Gender gender, Double height, Double weight, Color color, int numberOfEyes,
@@ -62,6 +65,7 @@ public class Minion extends Character {
         this.favouriteFood = favouriteFood;
         this.garment = garment;
         this.hobby = hobby;
+        numberOfMinions++;
     }
 
     public Minion(String name, LocalDate birthdayDate, Gender gender, Double height, Double weight,
@@ -74,6 +78,7 @@ public class Minion extends Character {
         this.favouriteFood = favouriteFood;
         this.garment = garment;
         this.hobby = hobby;
+        numberOfMinions++;
     }
 
     public Minion(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Gender gender, Double height,
@@ -86,6 +91,7 @@ public class Minion extends Character {
         this.favouriteFood = favouriteFood;
         this.garment = garment;
         this.hobby = hobby;
+        numberOfMinions++;
     }
 
     public Minion(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Color color,
@@ -97,6 +103,36 @@ public class Minion extends Character {
         this.favouriteFood = favouriteFood;
         this.garment = garment;
         this.hobby = hobby;
+        numberOfMinions++;
+    }
+
+    @Override
+    public void setWeight(Double weight) {
+        if(checkWeight(weight) && (weight<DEFAULT_WEIGHT*1000)){
+            this.weight = weight;
+        }
+    }
+
+    @Override
+    public void setHeight(Double height) {
+        if(checkHeight(height) && (height<DEFAULT_HEIGHT*1000)){
+            this.height = height;
+        }
+    }
+
+    @Override
+    public String saySomethingAboutYourself() {
+        return MessageFormat.format("\u00A1Hola! Soy minion. Me llamo {0} ", this.name);
+    }
+
+    @Override
+    public Double calculateAndGetBMI() {
+        if (this.weight != null && this.height != null) {
+            bmi = weight *1000/ (height * height) + 10;
+            CategorizeByBMI();
+            return bmi;
+        }
+        return null;
     }
 
     public HobbyType getHobby() {
@@ -209,5 +245,21 @@ public class Minion extends Character {
 
     public static HobbyType getDefaultHobby() {
         return DEFAULT_HOBBY;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        numberOfMinions++;
+        return super.clone();
     }
 }

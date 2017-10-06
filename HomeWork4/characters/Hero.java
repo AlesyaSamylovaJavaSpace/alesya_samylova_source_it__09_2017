@@ -1,22 +1,65 @@
 package characters;
 
+import utils.mytypes.Gender;
+
+import java.text.MessageFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Hero extends Character{
 
     public static final String DEFAULT_GENERAL_DEFINITIONS_OF_HERO = "Hero is a character with a mission";
-    private static Integer numberOfHeroes;
+    private static Integer numberOfHeroes = 0;
     public static String generalDefinitionOfHeroClass;
+    public static String defaultName = "Unknown Hero";
 
-    private boolean isGoodOne;
-    private ArrayList<String> superPowers;
+    private boolean isGoodOne = true;
+    private ArrayList<String> superPowers = new ArrayList<String>();
     private String realName;
     private String realSurname;
-    private ArrayList<String> weapon;
     private String symbol;
     private String motto;
-    private ArrayList<String> weakness;
     private boolean isImmortal;
+
+    public Hero() {
+        this(defaultName);
+    }
+
+    public Hero(String name) {
+        super(name);
+        numberOfHeroes++;
+    }
+
+    public Hero(String name, ArrayList<String> supperPowers) {
+        super(name);
+        this.superPowers.addAll(supperPowers);
+        numberOfHeroes++;
+    }
+    public Hero(String name, Gender gender, Double height, Double weight) {
+        super(name, gender, height, weight);
+        numberOfHeroes++;
+    }
+
+    public Hero(String name, LocalDate birthdayDate, Gender gender, Double height, Double weight) {
+        super(name, birthdayDate, gender, height, weight);
+        numberOfHeroes++;
+    }
+
+    public Hero(String name, int birthdayDay, int birthdayMonth, int birthdayYear, Gender gender, Double height,
+                Double weight) {
+        super(name, birthdayDay, birthdayMonth, birthdayYear, gender, height, weight);
+        numberOfHeroes++;
+    }
+
+    public Hero(String name, int birthdayDay, int birthdayMonth, int birthdayYear) {
+        super(name, birthdayDay, birthdayMonth, birthdayYear);
+        numberOfHeroes++;
+    }
+
+    @Override
+    public String saySomethingAboutYourself() {
+        return MessageFormat.format("Hi there! I''m one of the heroes. {0} is my name:)", this.name);
+    }
 
     public boolean isImmortal() {
         return isImmortal;
@@ -54,12 +97,22 @@ public class Hero extends Character{
         isGoodOne = goodOne;
     }
 
-    public ArrayList<String> getSuperPowers() {
-        return superPowers;
+    public String getSuperPowers() {
+        return superPowers.toString();
     }
 
-    public void setSuperPowers(ArrayList<String> superPowers) {
-        this.superPowers = superPowers;
+    public void resetToNewSetOfSuperPowers(ArrayList<String> superPowers) {
+        this.superPowers = new ArrayList<String>(superPowers);
+    }
+
+    public void addSuperPower (String superPower) {
+        if (superPower != null) {
+            this.superPowers.add(superPower);
+        }
+    }
+
+    public void removeSuperPower(String superPower){
+        this.superPowers.remove(superPower);
     }
 
     public String getRealName() {
@@ -78,14 +131,6 @@ public class Hero extends Character{
         this.realSurname = realSurname;
     }
 
-    public ArrayList<String> getWeapon() {
-        return weapon;
-    }
-
-    public void setWeapon(ArrayList<String> weapon) {
-        this.weapon = weapon;
-    }
-
     public String getSymbol() {
         return symbol;
     }
@@ -100,14 +145,6 @@ public class Hero extends Character{
 
     public void setMotto(String motto) {
         this.motto = motto;
-    }
-
-    public ArrayList<String> getWeakness() {
-        return weakness;
-    }
-
-    public void setWeakness(ArrayList<String> weakness) {
-        this.weakness = weakness;
     }
 
     public static String getDefaultGeneralDefinitionsOfHero() {
@@ -151,6 +188,7 @@ public class Hero extends Character{
 
     @Override
     public Object clone() throws CloneNotSupportedException {
+        numberOfHeroes++;
         return super.clone();
     }
 }

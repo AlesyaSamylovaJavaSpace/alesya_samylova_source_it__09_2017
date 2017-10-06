@@ -4,6 +4,8 @@ import utils.mytypes.BMICategories;
 import utils.mytypes.HeightUnit;
 import utils.mytypes.WeightUnit;
 import utils.mytypes.Gender;
+
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.lang.Cloneable;
@@ -16,7 +18,7 @@ public class Character implements Cloneable {
     protected static final HeightUnit DEFAULT_UNIT_OF_HEIGHT = HeightUnit.M;
     protected static final WeightUnit DEFAULT_UNIT_OF_WEIGHT = WeightUnit.KG;
     protected static Gender DEFAULT_GENDER = Gender.MALE;
-    public static String defaultName = "Unknown Hero";
+    public static String defaultName = "Unknown Character";
 
     protected String name;
     protected LocalDate birthdayDate;
@@ -73,6 +75,10 @@ public class Character implements Cloneable {
         }
     }
 
+    public String saySomethingAboutYourself() {
+        return MessageFormat.format("Hi! I''m Magical character {0} :)", this.name);
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -109,12 +115,13 @@ public class Character implements Cloneable {
         return birthdayDate;
     }
 
-    public void calculateAndSetAge() {
+    protected void calculateAndSetAge() {
         Period period = Period.between(birthdayDate, LocalDate.now());
         age = period.getYears();
     }
 
     public Integer getAge(){
+        calculateAndSetAge();
         return age;
     }
 
@@ -179,7 +186,7 @@ public class Character implements Cloneable {
         return categoryOfWeight;
     }
 
-    private void CategorizeByBMI(){
+    protected void CategorizeByBMI(){
         if (bmi < 18.5) {
             categoryOfWeight = BMICategories.UNDERWEIGHT;
         } else if (bmi < 24.9) {
