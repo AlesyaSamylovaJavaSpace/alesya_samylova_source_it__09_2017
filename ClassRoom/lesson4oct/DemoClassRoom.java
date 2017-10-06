@@ -1,10 +1,12 @@
+package lesson4oct;
+
 import java.util.Scanner;
 
 public class DemoClassRoom {
 
     public static void main(String[] args){
         do {
-            System.out.println("Would you like to get MyException? (type yes/ no)");
+            System.out.println("Would you like to get lesson4oct.MyException? (type yes/ no)");
             Scanner myScanner = null;
             TestClass myTestClass = new TestClass();
 
@@ -14,7 +16,7 @@ public class DemoClassRoom {
                  if (answer.equals("yes")) {
                      myTestClass.doSomething();
                  } else if (answer.equals("no")) {
-                     System.out.println("Your've chosen to not throw MyException");
+                     System.out.println("Your've chosen to not throw lesson4oct.MyException");
                  } else {
                      System.err.println("You've entered the wrong answer!");
                  }

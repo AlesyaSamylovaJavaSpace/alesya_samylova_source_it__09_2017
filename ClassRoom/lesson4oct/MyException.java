@@ -1,3 +1,4 @@
+package lesson4oct;
 
 public class MyException extends Exception {
 
@@ -12,6 +13,6 @@ public class MyException extends Exception {
 
     @Override
     public String toString() {
-        return "MyException{}";
+        return "lesson4oct.MyException{}";
     }
 }
