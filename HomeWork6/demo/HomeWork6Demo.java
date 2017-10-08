@@ -4,6 +4,7 @@ import task1.src.Task1Interface;
 import task1.src.Task1InterfaceImpl;
 import task1.util.ReviewMark;
 import task3.MyUtilityClass;
+import task4.IntArrayBinSearchClass;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -31,6 +32,7 @@ public class HomeWork6Demo {
                     getDemoOfTasks2And3();
                     break;
                 case 4:
+                    getDemoOfTask4();
                     break;
                 default:
                     System.out.println("There is no task number " + myTaskNumber);
@@ -113,5 +115,12 @@ public class HomeWork6Demo {
                 }
             }
         }
+    }
+
+    public static void getDemoOfTask4(){
+        Integer numOfElement1 = 10;
+        IntArrayBinSearchClass myTask4 = new IntArrayBinSearchClass(numOfElement1);
+        System.out.println(myTask4.toString());
+
     }
 }
