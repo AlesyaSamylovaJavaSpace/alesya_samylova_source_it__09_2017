@@ -119,8 +119,12 @@ public class HomeWork6Demo {
 
     public static void getDemoOfTask4(){
         Integer numOfElement1 = 10;
+        Integer value1 = 2;
         IntArrayBinSearchClass myTask4 = new IntArrayBinSearchClass(numOfElement1);
+        Integer value2 = myTask4.getElementByIndex(0);
         System.out.println(myTask4.toString());
+        System.out.println("Element [" + value1 + "] is in array: " + myTask4.containsElementFoundByBinarySearch(value1));
+        System.out.println("Element [" + value2 + "] is in array: " + myTask4.containsElementFoundByBinarySearch(value2));
 
     }
 }
