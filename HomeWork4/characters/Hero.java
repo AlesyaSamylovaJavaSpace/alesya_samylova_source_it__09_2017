@@ -1,12 +1,13 @@
 package characters;
 
+import task1.StoryTeller;
 import utils.mytypes.Gender;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Hero extends Character{
+public class Hero extends Character implements StoryTeller{
 
     public static final String DEFAULT_GENERAL_DEFINITIONS_OF_HERO = "Hero is a character with a mission";
     private static Integer numberOfHeroes = 0;
@@ -190,5 +191,20 @@ public class Hero extends Character{
     public Object clone() throws CloneNotSupportedException {
         numberOfHeroes++;
         return super.clone();
+    }
+
+    @Override
+    public String getCurrentMood() {
+        if (isGoodOne) {
+            return "I'm feeling so good! I'll help you!";
+        } else {
+            return "I'm feeling so low! I'll destroy you!";
+        }
+    }
+
+    @Override
+    public void tellAboutYourself() {
+        System.out.println(saySomethingAboutYourself());
+        System.out.println("-------- Hero says - \"Good bye!\" --------");
     }
 }

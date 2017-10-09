@@ -1,11 +1,12 @@
 package characters;
 
+import task1.StoryTeller;
 import utils.mytypes.*;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
 
-public class Minion extends Character {
+public class Minion extends Character implements StoryTeller {
     public static final Color DEFAULT_COLOR = Color.YELLOW;
     public static final String FAVOURITE_FOOD_BY_DEFAULT = "BANANAS";
     public static final int DEFAULT_NUMBER_OF_EYES = 2;
@@ -261,5 +262,17 @@ public class Minion extends Character {
     public Object clone() throws CloneNotSupportedException {
         numberOfMinions++;
         return super.clone();
+    }
+
+    @Override
+    public String getCurrentMood() {
+        return "I'm feeling good!";
+    }
+
+    @Override
+    public void tellAboutYourself() {
+        System.out.println(saySomethingAboutYourself());
+        System.out.println(" I like " + favouriteFood + " and I am good at " + hobby);
+        System.out.println("-------- Minion says - \"Adios!\" --------");
     }
 }
