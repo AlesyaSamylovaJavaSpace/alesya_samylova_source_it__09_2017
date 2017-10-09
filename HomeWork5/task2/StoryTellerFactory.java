@@ -3,9 +3,13 @@ package task2;
 import characters.Hero;
 import characters.Minion;
 import characters.Smurf;
+import inheritance.people.Person;
 import task1.StoryTeller;
+import task3.AbstractFactory;
 
-public class StoryTellerFactory {
+
+public class StoryTellerFactory extends AbstractFactory {
+    @Override
     public StoryTeller getStoryTeller(String storyTellerType){
         if (storyTellerType == null){
             return null;
@@ -19,6 +23,11 @@ public class StoryTellerFactory {
             return new Hero("Hulk");
         }
 
+        return null;
+    }
+
+    @Override
+    public Person getPerson(String personType) {
         return null;
     }
 }
