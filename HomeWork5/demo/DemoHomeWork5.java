@@ -9,7 +9,11 @@ import task2.StoryTellerFactory;
 import task3.AbstractFactory;
 import task3.FactoryProducer;
 import task3.PersonFactory;
+import task4.inner.builder.Pet;
+import task4.util.DomesticAnimalType;
+import utils.mytypes.Gender;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -33,6 +37,7 @@ public class DemoHomeWork5 {
                     getTask3AboutAbstractFactoryDemo();
                     break;
                 case 4:
+                    getTask4AboutBuilderDemo();
                     break;
                 default:
                     System.out.println("There is no such task number.");
@@ -102,5 +107,38 @@ public class DemoHomeWork5 {
         st1.tellAboutYourself();
         StoryTeller st2 = myStoryTellerFactory.getStoryTeller("SMURF");
         st2.tellAboutYourself();
+    }
+
+    public static void getTask4AboutBuilderDemo(){
+        Pet cat1 = Pet.newBuilder()
+                       .withTypeOfAnimal(DomesticAnimalType.CAT)
+                       .withGender(Gender.FEMALE).withYearOfBirth(2015)
+                       .withName("Anfisa")
+                       .withFullNameOfOwner("Kate", "MacFee")
+                       .withAddressOfOwner("UK, London, Baker St 7").build();
+
+        Pet dog1 = Pet.newBuilder()
+                .withTypeOfAnimal(DomesticAnimalType.DOG)
+                .withGender(Gender.MALE).withYearOfBirth(2017)
+                .withName("Rocky")
+                .withFullNameOfOwner("Michel", "Bell")
+                .withAddressOfOwner("USA, LA, Rodeo Drive 18").build();
+
+        Pet cat2 = Pet.newBuilder()
+                .withTypeOfAnimal(DomesticAnimalType.CAT)
+                .withGender(Gender.FEMALE).withYearOfBirth(2014)
+                .withName("Murka")
+                .withFullNameOfOwner("Lidia", "Petrenko")
+                .withAddressOfOwner("UA, Kharkiv, Sumska St 23").build();
+
+        ArrayList<Pet> registeredPets = new ArrayList<>();
+        registeredPets.add(cat1);
+        registeredPets.add(dog1);
+        registeredPets.add(cat2);
+
+        for (Pet pet: registeredPets){
+            System.out.println(pet.toString());
+        }
+
     }
 }
