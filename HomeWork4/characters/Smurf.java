@@ -1,11 +1,12 @@
 package characters;
 
+import task1.StoryTeller;
 import utils.mytypes.*;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
 
-public class Smurf extends Character {
+public class Smurf extends Character implements StoryTeller {
     public static final Color DEFAULT_COLOR = Color.BLUE;
     public static final String FAVOURITE_FOOD_BY_DEFAULT = "SMURFBERRIES";
     public static final String FAVOURITE_WORD_BY_DEFAULT = "SMURF";
@@ -212,4 +213,15 @@ public class Smurf extends Character {
         return super.clone();
     }
 
+    @Override
+    public String getCurrentMood() {
+        return "I'm feeling smurfisimo!";
+    }
+
+    @Override
+    public void tellAboutYourself() {
+        System.out.println(saySomethingAboutYourself());
+        System.out.println(" I like " + favouriteFood + " and I am good at " + featureOfSmurf);
+        System.out.println("-------- Smurf says - \"Smurfsee you!\" --------");
+    }
 }

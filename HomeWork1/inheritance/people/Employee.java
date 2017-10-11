@@ -9,6 +9,16 @@ public class Employee extends Person {
     private String salaryCurrency;
     private String salaryFrequency;
 
+    public Employee(){
+        super();
+    }
+
+    public Employee(String name, String surname, String patronymicName, String jobTitle) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymicName = patronymicName;
+        this.jobTitle = jobTitle;
+    }
 
     public String getJobTitle() {
         return jobTitle;
